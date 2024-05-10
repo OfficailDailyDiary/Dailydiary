@@ -2,8 +2,10 @@
 
 import 'package:daily_diary_app/constants/assets_constants.dart';
 import 'package:daily_diary_app/constants/color_constants.dart';
+import 'package:daily_diary_app/main.dart';
 import 'package:daily_diary_app/routes/route_constants.dart';
 import 'package:daily_diary_app/screens/home_screen/Widget/AddNotesScreen.dart';
+import 'package:daily_diary_app/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';

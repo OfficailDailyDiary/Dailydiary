@@ -6,17 +6,17 @@ import 'package:daily_diary_app/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:daily_diary_app/service/notes_service.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
+import '../main.dart';
+
 final List<GetPage> getPages = [
   GetPage(
     name: RouteConstants.signInPage,
-    page: () => (NotesService.notesService.user != null)
-        ? const HomePage()
-        : const LoginScreen(),
+    page: () => (currentUser != null) ? const HomePage() : const LoginScreen(),
   ),
-  // GetPage(
-  //   name: RouteConstants.homepage,
-  //   page: () => const HomePage(),
-  // ),
+  GetPage(
+    name: RouteConstants.homepage,
+    page: () => const HomePage(),
+  ),
   GetPage(
     name: RouteConstants.onBoarding,
     page: () => const OnBoardingScreen1(),

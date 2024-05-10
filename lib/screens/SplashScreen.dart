@@ -3,7 +3,10 @@
 import 'dart:developer';
 
 import 'package:daily_diary_app/screens/home_screen/home_screen.dart';
+import 'package:daily_diary_app/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/assets_constants.dart';
 
@@ -16,19 +19,32 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   navigate() {
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => HomePage()),
-          (route) => false);
-    });
+    if (currentUser == null) {
+      Future.delayed(Duration(seconds: 3), () {
+        Get.offAll(() => LoginScreen());
+      });
+    } else {
+      Future.delayed(Duration(seconds: 3), () {
+        Get.offAll(() => HomePage());
+      });
+    }
+  }
+
+  String? currentUser;
+  SharedPreferences? prefs;
+  getUser() async {
+    prefs = await SharedPreferences.getInstance();
+    currentUser = prefs!.getString('user');
+    print('userv ois ---->>>$currentUser');
+    navigate();
   }
 
   @override
   void initState() {
     super.initState();
+    getUser();
     log("SplashScreen<><><>");
-    navigate();
+    // navigate();
   }
 
   @override

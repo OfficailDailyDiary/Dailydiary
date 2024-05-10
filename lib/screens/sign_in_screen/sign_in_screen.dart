@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:daily_diary_app/main.dart';
 import 'package:daily_diary_app/routes/route_constants.dart';
 import 'package:daily_diary_app/service/notes_service.dart';
 import 'package:flutter/material.dart';
@@ -49,10 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ]),
             ),
             onPressed: () {
-              NotesService.notesService.signInWithGoogle().then(
-                  (value) => {Get.offAllNamed(RouteConstants.signInPage)});
-
-              log('uid is -->${NotesService.notesService.user}');
+              NotesService.notesService.signInWithGoogle();
             },
           ),
         ],
