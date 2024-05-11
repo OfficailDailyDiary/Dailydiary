@@ -44,7 +44,9 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
           GestureDetector(
             onTap: () {
               NotesService.notesService.addNotes(
-                  title: titleController.text, note: noteController.text);
+                  title: titleController.text,
+                  note: noteController.text,
+                  timeLaps: DateTime.now().millisecondsSinceEpoch.toString());
               Get.back();
             },
             child: Text(

@@ -63,12 +63,28 @@ class NotesService {
     }
   }
 
-  addNotes({required String title, required String note}) {
-    return fireStore.collection('Notes').add({
+  addNotes(
+      {required String title, required String note, required String timeLaps}) {
+    return fireStore.collection('Notes').doc(timeLaps).set({
       'title': title,
       'note': note,
-      'userId': user!.id,
+      'userId': user?.id ?? '',
+      'timeLaps': timeLaps
     });
+  }
+
+  updateNotes(
+      {required String title, required String note, required String timeLaps}) {
+    return fireStore.collection('Notes').doc(timeLaps).set({
+      'title': title,
+      'note': note,
+      'userId': user?.id ?? '',
+      'timeLaps': timeLaps,
+    });
+  }
+
+  deleteNote({required String timeLaps}) {
+    return fireStore.collection('Notes').doc(timeLaps).delete();
   }
 
   Stream<List<Notes>> getNotes() {

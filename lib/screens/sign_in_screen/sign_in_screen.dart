@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:awesome_icons/awesome_icons.dart';
 import 'package:daily_diary_app/main.dart';
 import 'package:daily_diary_app/routes/route_constants.dart';
 import 'package:daily_diary_app/service/notes_service.dart';
@@ -22,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text('Welcome to We Chat'),
+        title: const Text('Welcome to Notes App'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -38,7 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 backgroundColor: const Color.fromARGB(255, 223, 255, 187),
                 shape: const StadiumBorder(),
                 elevation: 1),
-            icon: const Icon(Icons.add),
+            icon: const Icon(
+              FontAwesomeIcons.googlePlus,
+              color: Colors.red,
+            ),
             label: RichText(
               text: const TextSpan(
                   style: TextStyle(color: Colors.black, fontSize: 16),
